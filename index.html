@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mía 💌</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+        h2 { color: #333; margin-top: 0; }
+        p { color: #666; font-size: 15px; }
+        input {
+            padding: 12px;
+            width: 100%;
+            margin: 15px 0;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            font-size: 16px;
+            text-align: center;
+            outline: none;
+            transition: border 0.3s;
+        }
+        input:focus { border-color: #ff4757; }
+        button {
+            padding: 12px 25px;
+            background: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        button:hover { background: #ff6b81; }
+        .hidden { display: none; }
+        #mensaje {
+            text-align: left;
+            line-height: 1.7;
+            color: #2c3e50;
+            font-size: 16px;
+            white-space: pre-line;
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        .error-msg { color: #e74c3c; font-size: 14px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div id="login-screen">
+          <img src="https://i.imgur.com/mzg9Oz5.jpeg" alt="Imagen Decorativa" style="max-width: 100px; margin-bottom: 15px; border-radius: 50%;">
+            <h2>Carta Secreta 🔒</h2>
+            <p>Escribe la clave secreta para desbloquear la carta:</p>
+            <input type="password" id="clave" placeholder="Introduce la clave">
+            <button onclick="verificar()">Desbloquear</button>
+            <p id="error" class="error-msg"></p>
+        </div>
+
+        <div id="carta-screen" class="hidden">
+            <h2>Para Mía 💌</h2>
+            <div id="mensaje">Escribe tu carta aquí...</div>
+        </div>
+    </div>
+
+    <script>
+        function verificar() {
+            const claveCorrecta = "2008"; 
+
+            const input = document.getElementById("clave").value.trim();
+            if (input === claveCorrecta) {
+                document.getElementById("login-screen").classList.add("hidden");
+                document.getElementById("carta-screen").classList.remove("hidden");
+            } else {
+                document.getElementById("error").innerText = "Clave incorrecta. Intenta de nuevo ❤️";
+            }
+        }
+    </script>
+
+</body>
+</html>
